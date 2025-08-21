@@ -1,0 +1,16 @@
+{
+  "name": "chibi-vue-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd examples/playground && pnpm i && pnpm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.2",
+  "devDependencies": {
+    "@types/node": "^24.3.0"
+  }
+}
