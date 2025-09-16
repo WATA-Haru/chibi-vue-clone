@@ -17,7 +17,7 @@ export interface RendererOptions<HostNode = RendererNode> {
 export interface RendererNode {
   [key: string]: any
 }
-/** DOMに依存しないためのinterface*/
+/** DOMに依存しないためにgenericにしてある。*/
 export interface RendererElement extends RendererNode {}
 
 export type RootRenderFunction<HostElement = RendererElement> = (
@@ -26,29 +26,39 @@ export type RootRenderFunction<HostElement = RendererElement> = (
 ) => void
 
 export function createRenderer(options: RendererOptions) {
-  const { 
-    createElement: hostCreateElement,
-    createText: hostCreateText,
-    insert: hostInsert
-  } = options
+  const { setElementText: hostSetElementText } = options
 
-  function renderVNode(vnode: VNode | string) {
-    if (typeof vnode === 'string') return hostCreateText(vnode)
-    const el = hostCreateElement(vnode.type)
-
-    for (const child of vnode.children) {
-      const childEl = renderVNode(child)
-      hostInsert(childEl, el)
-    }
-
-    return el
-  }
-
-  // RootRenderFunctionは、stringと、HostElementを受け取ってsetElementTextを実行
-  const render: RootRenderFunction = (vnode, container) => {
-    const el = renderVNode(vnode)
-    hostInsert(el, container)
+  const render: RootRenderFunction = (message, container) => {
+    hostSetElementText(container, message)
   }
 
   return { render }
 }
+
+//export function createRenderer(options: RendererOptions) {
+//  const { 
+//    createElement: hostCreateElement,
+//    createText: hostCreateText,
+//    insert: hostInsert
+//  } = options
+//
+//  function renderVNode(vnode: VNode | string) {
+//    if (typeof vnode === 'string') return hostCreateText(vnode)
+//    const el = hostCreateElement(vnode.type)
+//
+//    for (const child of vnode.children) {
+//      const childEl = renderVNode(child)
+//      hostInsert(childEl, el)
+//    }
+//
+//    return el
+//  }
+//
+//  // RootRenderFunctionは、stringと、HostElementを受け取ってsetElementTextを実行
+//  const render: RootRenderFunction = (vnode, container) => {
+//    const el = renderVNode(vnode)
+//    hostInsert(el, container)
+//  }
+//
+//  return { render }
+//}

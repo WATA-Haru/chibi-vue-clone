@@ -1,4 +1,4 @@
-import { RendererOptions } from '../runtime-core/renderer'
+import { RendererOptions } from '../runtime-core'
 
 export const nodeOps: RendererOptions<Node> = {
 
