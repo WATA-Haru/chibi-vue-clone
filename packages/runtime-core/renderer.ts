@@ -3,7 +3,10 @@ import { VNode, VNodeProps } from "./vnode"
  * RenderOptionsはHostNodeに対する操作についてまとめている型っぽい
  * HostNodeにsetElementTextをしている。他のやつも出るだろう
  */
-export interface RendererOptions<HostNode = RendererNode> {
+export interface RendererOptions<
+  HostNode = RendererNode,
+  HostElement = RendererElement
+  > {
   createElement(type: string): HostNode
 
   createText(type: string): HostNode
@@ -11,6 +14,8 @@ export interface RendererOptions<HostNode = RendererNode> {
   setElementText(node: HostNode, text: string):void
 
   insert(child: HostNode, parent: HostNode, anchor?: HostNode | null): void
+
+  patchProp(el: HostElement, key: string, value: any): void
 }
 
 /** DOMに依存しないためのinterface*/
