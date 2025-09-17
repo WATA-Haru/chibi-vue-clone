@@ -52,4 +52,37 @@ DIP: Dependency Inversion Principle
 
 
 
+## h関数でレンダリングできるようにする
+https://book.chibivue.land/ja/10-minimum-example/020-simple-h-function.html
+
+だんだん分かってきたかも
+h関数は以下のようなインターフェースにして、戻り値はresultのオブジェクト型とする。
+```ts
+const result = h('div', { class: 'container' }, ['hello'])
+```
+
+```ts
+const result = {
+  type: 'div',
+  props: { class: 'container' },
+  children: ['hello'],
+}
+```
+
+render関数からresultのようなオブジェクトを受け取って、これをもとにDOM操作してrenderingする。
+render関数はsetHTMLElementとかcreateTextNodeとかの関数だと思えばよい
+```ts
+const app: App = {
+  mount(rootContainer: HostElement) {
+    const node = rootComponent.render!()
+    render(node, rootContainer)
+  }
+}
+```
+なお、nodeというオブジェクトに変わったものは仮想DOMと呼ばれる。
+
+
+
+
+
 
