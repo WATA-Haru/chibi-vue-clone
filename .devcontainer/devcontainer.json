@@ -1,11 +1,6 @@
 {
   "name": "test-nvim",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "dotfiles": {
-    "repository": "git@github.com:WATA-Haru/chibi-vue-clone.git",
-    "targetPath": "~/dotfiles",
-    "installCommand": "~/dotfiles/install/devcontainers/ubuntu/install.sh"
-  },
   "features": {
       "ghcr.io/devcontainers/features/node:1": {}
   },

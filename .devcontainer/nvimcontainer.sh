@@ -29,4 +29,6 @@ command="devcontainer up $rebuild_flag \
     --workspace-folder ."
 
 eval "$command"
-eval "devcontainer exec --workspace-folder . bash"
+eval "devcontainer exec \
+      --remote-env REMOTE_CONTAINERS=true \
+      --workspace-folder . bash"
