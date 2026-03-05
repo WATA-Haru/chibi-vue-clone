@@ -5,5 +5,8 @@
       "ghcr.io/devcontainers/features/node:1": {}
   },
   "postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install --lts",
-  "runArgs": ["-p", "2222:2222"]
+  "runArgs": ["-p", "2222:2222"],
+  "containerEnv": {
+    "REMOTE_CONTAINERS": "true"
+  }
 }
