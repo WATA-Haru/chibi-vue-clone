@@ -1,0 +1,9 @@
+{
+  "name": "test-nvim",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+      "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install --lts",
+  "runArgs": ["--network=host"]
+}
